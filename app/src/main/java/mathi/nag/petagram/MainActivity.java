@@ -1,80 +1,68 @@
 package mathi.nag.petagram;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ActionMenuView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
+import mathi.nag.petagram.adaptadores.MascotaAdaptador;
+import mathi.nag.petagram.adaptadores.PageAdapter;
+import mathi.nag.petagram.fragments.Lista_mascotas;
+import mathi.nag.petagram.fragments.Perfil;
+import mathi.nag.petagram.pojo.Mascota;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Mascota> mascotas;
-    private RecyclerView listaMascotas;
+
+    private Toolbar miActionBar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.principal);
 
+        miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        setUpViewPager();
 
-        listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
-
-        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
-        setSupportActionBar(miActionBar);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        listaMascotas.setLayoutManager(llm);
-////////////////////////////////
-        //con esto estamos diciendo que listacontactos que es un recyclerview se comporte como un Linearlayoutmanager
-        inicializarListaMascotas();
-        inicializarAdaptador();
-
-    }
-
-///////////////////////////////////////
-
-    public void inicializarAdaptador() { //recibe la lista de contactos
-
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this); //se le agrego el activity
-        listaMascotas.setAdapter(adaptador); //le pone el adaptador a la lista de mascotas
-        //el recyclerview ya contiene el adaptador, que el recyclerview va a estar llamando al layout CARDVIEW_MASCOTA
-        //va a estar pasandole todos los datos del arraylist a todos los views que el viewholder esta declarando
-
-    }
-
-    public void inicializarListaMascotas() {
-        mascotas = new ArrayList<Mascota>(); //creo una nueva lista de contactos
-
-        mascotas.add(new Mascota("Catty", R.drawable.d1, 0));
-        mascotas.add(new Mascota("Puppy", R.drawable.chicle, 0));
-        mascotas.add(new Mascota("Malon", R.drawable.caramelo, 0));
-        mascotas.add(new Mascota("Roger", R.drawable.dos, 0));
-        mascotas.add(new Mascota("Lucas", R.drawable.oip, 0));
-        mascotas.add(new Mascota("otroperro", R.drawable.tres, 0));
-        mascotas.add(new Mascota("unoperromas", R.drawable.cuatro, 0));
-
-
-     //   ArrayList<String> nombresMascota = new ArrayList<>(); //crea una nueva lista solo con los nombres de las mascotas
-       // for (Mascota mascota : mascotas) { //aqui la recorre y la llena
-            //       nombresMascota.add(mascota.getNombre());
-            // nombresMascota.add(getin Contador());*/
-
+        if (miActionBar != null){
+            setSupportActionBar(miActionBar);
         }
 
+    }
 
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
 
+        fragments.add(new Lista_mascotas());
+        fragments.add(new Perfil());
+
+        return fragments;
+    }
+
+    private void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.mipmap.ic_house);
+        tabLayout.getTabAt(1).setIcon(R.mipmap.ic_lobo);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) { //recibe un menu de nombre menu
@@ -84,23 +72,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { //recibe el item del menu seleccionado
-        switch (item.getItemId()) {
-            case R.id.mAbout:
 
-                break;
+        if (item.getItemId() == R.id.contacto){
+            Intent i = new Intent(MainActivity.this, Formulario.class);
+            startActivity(i);
+        }else if (item.getItemId() == R.id.Acerca_de){
+            Intent i2 = new Intent(MainActivity.this, Acerca_de.class);
+            startActivity(i2);
+        }else if (item.getItemId() == R.id.mRefresh){
+            Intent intent2 = new Intent(MainActivity.this, Top5Mascotas.class);
+            startActivity(intent2);
+        }
 
-            case R.id.mSettings:
-
-                break;
-
-            case R.id.mRefresh:
-
-                Intent intent2 = new Intent(MainActivity.this, Top5Mascotas.class);
-                startActivity(intent2);
-
-                };
-
-                return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
         }
 
 

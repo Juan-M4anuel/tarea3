@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import mathi.nag.petagram.adaptadores.MascotaAdaptador;
+import mathi.nag.petagram.pojo.Mascota;
 
 public class Top5Mascotas extends AppCompatActivity {
 

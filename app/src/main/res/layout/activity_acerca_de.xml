@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Acerca_de">
+
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"
+        />
+
+    <TextView
+        android:id="@+id/Titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miActionBar"
+        android:text="@string/tituloA"
+        android:textColor="@color/Negro"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Titulo"
+        android:text="El desarrollador de esta aplicacion es Juan Manuel Pereira, estudiante del programa b_IT y ademas
+estudiante de ingenieria de computacion. Desarrolla esta aplicacion para el tercer curso de android del programa."
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/Negro"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp" />
+
+
+
+</RelativeLayout>

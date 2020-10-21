@@ -1,4 +1,4 @@
-package mathi.nag.petagram;
+package mathi.nag.petagram.adaptadores;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,13 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MascotasFavoritasAdaptador extends  RecyclerView.Adapter<MascotasFavoritasAdaptador.MascotaViewHolder> {
+import mathi.nag.petagram.DetalleMascota;
+import mathi.nag.petagram.R;
+import mathi.nag.petagram.pojo.Mascota;
+
+public class MascotaAdaptador extends  RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
     ArrayList<Mascota> mascotas;
     Activity activity;
     private int contador;
 
 
-    public MascotasFavoritasAdaptador(ArrayList<Mascota> mascotas, Activity activity) {
+    public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity) {
         this.mascotas = mascotas; //construye nuestra lista de mascotas
         this.activity = activity;
     }
@@ -30,7 +34,7 @@ public class MascotasFavoritasAdaptador extends  RecyclerView.Adapter<MascotasFa
     @Override
     //inflar el layout y lo pasara al viewholder para que el obtenga los views
     public MascotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_mascotas_favoritas, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_mascota, parent, false);
         //esta sentencia de arriba le da vida a nuestro layout
         return new MascotaViewHolder(v); //devuelve el constructor para tomar cada elemento
     }
@@ -42,23 +46,22 @@ public class MascotasFavoritasAdaptador extends  RecyclerView.Adapter<MascotasFa
         final Mascota mascota = mascotas.get(position); //obtiene el objeto
         mascotaViewHolder.tvNombreCV.setText(mascota.getNombre());
         mascotaViewHolder.imgFoto.setImageResource(mascota.getFoto());
+        //mascotaViewHolder.tvLikesCV.setText(mascota.getContador());
         mascotaViewHolder.contador.setText(mascotas.get(position).getContador() + "");
 
-        //   mascotaViewHolder.tvLikesCV.setText(mascota.getContador());
 
-
-        /*mascotaViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
+        mascotaViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, "Diste like a " + mascota.getNombre(),
-                        Toast.LENGTH_SHORT).show();*/
+                        Toast.LENGTH_SHORT).show();
 
 
                 mascotas.get(position).setContador(mascotas.get(position).getContador()+1);
                 mascotaViewHolder.contador.setText(mascotas.get(position).getContador() + "");
 
-
-
+            }
+        });
 
         mascotaViewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +95,9 @@ public class MascotasFavoritasAdaptador extends  RecyclerView.Adapter<MascotasFa
 
         public MascotaViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgFoto = (ImageView) itemView.findViewById(R.id.imgFotoFavorita);
-            tvNombreCV = (TextView) itemView.findViewById(R.id.tvNombreCVFavorita);
-          //  btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
+            imgFoto = (ImageView) itemView.findViewById(R.id.imgFoto);
+            tvNombreCV = (TextView) itemView.findViewById(R.id.tvNombreCV);
+            btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
             contador = (TextView) itemView.findViewById(R.id.tvContadorCV);
         }
     }

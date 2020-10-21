@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Formulario">
+
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"
+
+        />
+
+    <TextView
+        android:id="@+id/Titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miActionBar"
+        android:text="Contactanos!"
+        android:textColor="@color/Negro"
+        android:textAlignment="center"
+        android:textSize="30dp"
+
+        />
+
+    <EditText
+        android:id="@+id/inNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Titulo"
+        android:layout_marginTop="15dp"
+        android:hint="@string/nombreF"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"/>
+
+    <EditText
+        android:id="@+id/inEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inNombre"
+        android:layout_marginTop="2dp"
+        android:hint="@string/emailF"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"/>
+
+    <EditText
+        android:id="@+id/inMesanje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inEmail"
+        android:layout_marginTop="2dp"
+        android:hint="@string/mensaje"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"/>
+
+    <Button
+        android:id="@+id/btnMandarEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inMesanje"
+        android:text="@string/Enviar"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginLeft="90dp"/>
+
+</RelativeLayout>

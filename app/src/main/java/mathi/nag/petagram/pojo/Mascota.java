@@ -1,4 +1,4 @@
-package mathi.nag.petagram;
+package mathi.nag.petagram.pojo;
 
 import androidx.appcompat.app.AppCompatActivity;
 

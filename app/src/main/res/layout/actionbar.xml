@@ -10,6 +10,7 @@
     app:titleTextColor="#000000"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:layout_scrollFlags="scroll|enterAlways"
     >
 
     <ImageView
@@ -29,25 +30,5 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="30dp"
         />
-       <!-- <ImageButton
-        android:id="@+id/estrella5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@mipmap/estrella5"
-        android:layout_marginHorizontal="0dp"
-        />-->
 
-   <!-- <item
-        android:id="@+id/mRefresh"
-        android:title="Refresh"
-        android:orderInCategory="102"
-        app:showAsAction="always"
-        android:icon="@mipmap/estrella5"
-    />-->
-
-
-    >
 </androidx.appcompat.widget.Toolbar>
-
-<!--
-    //este layout es solo para crear nuestra barra-->

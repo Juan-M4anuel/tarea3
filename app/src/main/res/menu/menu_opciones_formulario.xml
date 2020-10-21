@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/contacto"
-        android:title="@string/menu_contacto"
-        android:orderInCategory="100"
-        >
-    </item>
 
     <item android:id="@+id/Acerca_de"
         android:title="@string/menu_acerca_de"
