@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import mathi.nag.petagram.DetalleMascota;
 import mathi.nag.petagram.R;
+import mathi.nag.petagram.db.ConstructorMascotas;
 import mathi.nag.petagram.pojo.Mascota;
 
 public class MascotaAdaptador extends  RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
@@ -47,7 +48,7 @@ public class MascotaAdaptador extends  RecyclerView.Adapter<MascotaAdaptador.Mas
         mascotaViewHolder.tvNombreCV.setText(mascota.getNombre());
         mascotaViewHolder.imgFoto.setImageResource(mascota.getFoto());
         //mascotaViewHolder.tvLikesCV.setText(mascota.getContador());
-        mascotaViewHolder.contador.setText(mascotas.get(position).getContador() + "");
+        mascotaViewHolder.contador.setText(String.valueOf(mascotas.get(position).getContador()) + "");
 
 
         mascotaViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
@@ -56,9 +57,9 @@ public class MascotaAdaptador extends  RecyclerView.Adapter<MascotaAdaptador.Mas
                 Toast.makeText(activity, "Diste like a " + mascota.getNombre(),
                         Toast.LENGTH_SHORT).show();
 
-
-                mascotas.get(position).setContador(mascotas.get(position).getContador()+1);
-                mascotaViewHolder.contador.setText(mascotas.get(position).getContador() + "");
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darLikeMascota(mascota);
+                mascotaViewHolder.contador.setText(constructorMascotas.obtenerLikesMascota(mascota));
 
             }
         });

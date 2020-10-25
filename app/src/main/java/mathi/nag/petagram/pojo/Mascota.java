@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Mascota extends AppCompatActivity {
 
+    private int id;
     private String nombre;
     private int foto;
     private int contador;
@@ -14,6 +15,10 @@ public class Mascota extends AppCompatActivity {
         this.foto = foto;
         this.contador = contador;
         //this.orden = true;
+    }
+
+    public Mascota() {
+
     }
 
     public String getNombre() {
@@ -40,7 +45,11 @@ public class Mascota extends AppCompatActivity {
         this.contador = contador;
     }
 
-   // public void setOrdenar(boolean orden) { this.orden = orden;}
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
+
+    // public void setOrdenar(boolean orden) { this.orden = orden;}
 
     /*@Override
     public int compareTo(Mascota mascota) {
